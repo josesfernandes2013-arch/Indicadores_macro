@@ -29,6 +29,7 @@ def carregar_excel(ficheiro, folha=None):
 
 # -------- CAMINHO DO FICHEIRO EXCEL --------
 FICHEIRO_EXCEL = r"C:\Users\joses\Documents\PYTHON\Indicadores_Macro.xlsx"
+FICHEIRO_EXCEL = "Indicadores_Macro.xlsx"
 
 if escolha == "Home":
     st.title("📊 Dashboard Macroeconómico de Cabo Verde")
@@ -387,6 +388,7 @@ elif escolha == "Principais Rácios Macroeconómicos":
         st.plotly_chart(fig, use_container_width=True)
         # Fonte / nota abaixo da tabela
         st.markdown("<p style='text-align:center; font-size:12px; color:gray;'>Fonte: Autor</p>", unsafe_allow_html=True)
+
 
 
 
