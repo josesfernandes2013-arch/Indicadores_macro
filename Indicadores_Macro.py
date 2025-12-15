@@ -31,6 +31,14 @@ def carregar_excel(ficheiro, folha=None):
 FICHEIRO_EXCEL = r"C:\Users\joses\Documents\PYTHON\Indicadores_Macro.xlsx"
 FICHEIRO_EXCEL = "Indicadores_Macro.xlsx"
 
+st.set_page_config(
+    page_title="Dashboard Macroeconómico de Cabo Verde",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+
 if escolha == "Home":
     st.title("📊 Dashboard Macroeconómico de Cabo Verde")
     st.markdown("""
@@ -67,7 +75,7 @@ if escolha == "Setor Real":
     col3.metric("Inflação", f"{ultimo['Inflacao']:.1f}%")
 
     # Layout: tabela à esquerda, gráfico à direita
-    col_table, col_chart = st.columns([1, 2])
+    col_table, col_chart = st.columns([1.3, 1.7])
 
     # -------- TABELA BONITA COM PLOTLY --------
     with col_table:
@@ -131,7 +139,7 @@ elif escolha == "Setor Fiscal":
     col1.metric("📥 Receitas", f"{ultimo['Receitas']:,.0f} Milhões de CVE", f"{ultimo['CrescimentoReceitas']:.1f}%")
     col2.metric("📤 Despesas", f"{ultimo['Despesas']:,.0f} Milhões de CVE", f"{ultimo['CrescimentoDespesas']:.1f}%")
 
-    col_table, col_chart = st.columns([1,2])
+    col_table, col_chart = st.columns([1.8,1.2])
     with col_table: st.dataframe(df_f)
     with col_chart:
         fig = px.bar(x=["Receitas","Despesas"], y=[ultimo["Receitas"], ultimo["Despesas"]],
@@ -163,7 +171,7 @@ elif escolha == "Setor Monetário":
     col3.metric("Crédito à Economia (Milhões de CVE)", f"{ultimo['CreditoEconomia']:,.0f}")
 
     # Layout: gráfico das taxas de juros à esquerda, tabela à direita
-    col_chart, col_table = st.columns([2, 1])
+    col_chart, col_table = st.columns([1.4, 1.6])
     with col_chart:
         fig, ax = plt.subplots()
         ax.plot(df_f["Ano"], df_f["TaxaJuro"], marker="o", color="blue")
@@ -206,7 +214,7 @@ elif escolha == "Setor Externo":
     col3.metric("Saldo da Balança", f"{saldo_ultimo:,.0f}")
 
     # Layout: tabela à esquerda, gráfico à direita
-    col_table, col_chart = st.columns([1, 2])
+    col_table, col_chart = st.columns([1.6, 1.4])
     with col_table:
         st.dataframe(df_f[["Ano", "Exportacoes", "Importacoes"]])
 
@@ -273,7 +281,7 @@ elif escolha == "Principais Rácios Macroeconómicos":
         df_f_plot = df_f.copy()  # Todos os rácios
 
     # Layout: tabela à esquerda, gráfico à direita
-    col_table, col_chart = st.columns([1, 2])
+    col_table, col_chart = st.columns([1.3, 1.7])
 
     # -------- TABELA BONITA COM PLOTLY --------
     with col_table:
@@ -388,6 +396,8 @@ elif escolha == "Principais Rácios Macroeconómicos":
         st.plotly_chart(fig, use_container_width=True)
         # Fonte / nota abaixo da tabela
         st.markdown("<p style='text-align:center; font-size:12px; color:gray;'>Fonte: Autor</p>", unsafe_allow_html=True)
+
+
 
 
 
