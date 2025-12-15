@@ -33,7 +33,7 @@ FICHEIRO_EXCEL = "Indicadores_Macro.xlsx"
 
 st.set_page_config(
     page_title="Dashboard Macroeconómico de Cabo Verde",
-    page_icon="📊",
+    page_icon="💹",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -396,6 +396,7 @@ elif escolha == "Principais Rácios Macroeconómicos":
         st.plotly_chart(fig, use_container_width=True)
         # Fonte / nota abaixo da tabela
         st.markdown("<p style='text-align:center; font-size:12px; color:gray;'>Fonte: Autor</p>", unsafe_allow_html=True)
+
 
 
 
